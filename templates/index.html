@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PE File Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #62ddf9;
+            /* Fallback color */
+            background-image: url('images.jpeg');
+            background-size: cover;
+            /* Ensure the background image covers the entire area */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Prevent repetition */
+            color: #f80909fd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Full viewport height */
+        }
+
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction,
+        .accuracy {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-size: 18px;
+            color: #495057;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload PE File for Classification</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".exe" required>
+            <input type="submit" value="Classify">
+        </form>
+        {% if prediction %}
+        <div class="prediction">
+            <h2>Prediction:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+        {% if accuracy %}
+        <div class="accuracy">
+            <h2>Accuracy:</h2>
+            <p>{{ accuracy }}%</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

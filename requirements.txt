@@ -1,0 +1,8 @@
+python==3.10.2
+flask
+pickle5
+joblib
+pefile
+scikit-learn
+pandas
+numpy

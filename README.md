@@ -51,7 +51,7 @@ The model is trained on a dataset of PE files with labeled features. The dataset
 - Continuous improvement of the model is needed as new malware samples are discovered.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+----------------------------------------------------------------.
 
 ## Acknowledgments
 - Special thanks to the contributors and the community for their support.

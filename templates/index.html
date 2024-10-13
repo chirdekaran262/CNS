@@ -9,38 +9,68 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #62ddf9;
-            /* Fallback color */
             background-image: url('images.jpeg');
             background-size: cover;
-            /* Ensure the background image covers the entire area */
             background-position: center;
-            /* Center the image */
             background-repeat: no-repeat;
-            /* Prevent repetition */
-            color: #f80909fd;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
-            /* Full viewport height */
         }
 
+        /* Stylish header for the title */
+        .hn {
+            margin-top: 0px;
+            color: #fff;
+            font-size: 50px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
         .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             text-align: center;
             max-width: 500px;
             width: 100%;
+            margin-top: 40px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             color: #333;
             margin-bottom: 20px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 28px;
         }
 
         form {
@@ -50,40 +80,118 @@
         }
 
         input[type="file"] {
+            background-color: #fff;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            padding: 10px;
             margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="file"]:hover {
+            background-color: #f0f0f0;
         }
 
         input[type="submit"] {
             background-color: #007bff;
             border: none;
             color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
+            padding: 12px 25px;
             font-size: 16px;
             margin-top: 10px;
-            border-radius: 4px;
+            border-radius: 30px;
             cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease;
         }
 
         input[type="submit"]:hover {
             background-color: #0056b3;
+            transform: scale(1.1);
         }
 
         .prediction,
         .accuracy {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 4px;
+            padding: 15px;
+            background-color: rgba(233, 236, 239, 0.8);
+            border-radius: 8px;
             font-size: 18px;
             color: #495057;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .prediction p {
+            font-weight: bold;
+            /* Bold the result */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Disclaimer section */
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .disclaimer p {
+            margin: 0;
+        }
+
+        .disclaimer p:before {
+            content: "*";
+            margin-right: 5px;
+            color: #f00;
+        }
+
+        /* Add responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            input[type="submit"] {
+                padding: 10px 20px;
+            }
+
+            .hn {
+                font-size: 40px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Stylish header at the top -->
+    <div class="hn">Malware Detector</div>
+
+    <!-- Main content -->
     <div class="container">
         <h1>Upload PE File for Classification</h1>
         <form method="POST" enctype="multipart/form-data">
@@ -102,6 +210,12 @@
             <p>{{ accuracy }}%</p>
         </div>
         {% endif %}
+
+        <!-- Disclaimer Section -->
+        <div class="disclaimer">
+            <p>Please note, the prediction results are not 100% accurate and are intended to assist with classification.
+                Always verify the results through additional means.</p>
+        </div>
     </div>
 </body>
 

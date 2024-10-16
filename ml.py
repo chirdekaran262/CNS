@@ -51,5 +51,4 @@ with open('features.pkl', 'wb') as f:
 # Predict and calculate accuracy on the test set
 y_pred = decision_tree.predict(X_test_new)
 accuracy = accuracy_score(y_test, y_pred)
-
 print(f'Model accuracy on the test set: {accuracy * 100:.2f}%')
